@@ -76,7 +76,7 @@ void init_chip8(chip8* cp){
             cp->stack[i] = 0;
         }
         if(i < 80)
-            cp->memory[FONT_START_ADDRESS + i] = fonts[i];
+            cp->memory[i] = fonts[i];
         else
             cp->memory[i] = 0;
     }
@@ -263,7 +263,7 @@ void cycle(chip8* cp){
                     cp->index += cp->registers[vx];
                     break;
                 case 0x29:
-                    cp->index = FONT_START_ADDRESS + (5 * cp->registers[vx]);
+                    cp->index = 5 * cp->registers[vx];
                     break;
                 case 0x33:
                     {
